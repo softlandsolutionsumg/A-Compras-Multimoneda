@@ -52,6 +52,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Propp.cs" />
+    <Compile Include="Forms\Areas\Compras\frm_histograma_moneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_histograma_moneda.Designer.cs">
+      <DependentUpon>frm_histograma_moneda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_moneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_moneda.Designer.cs">
+      <DependentUpon>frm_moneda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_transaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_transaccion.Designer.cs">
+      <DependentUpon>frm_transaccion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Areas\Logistica\beta3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +120,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Areas\Compras\frm_histograma_moneda.resx">
+      <DependentUpon>frm_histograma_moneda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Compras\frm_moneda.resx">
+      <DependentUpon>frm_moneda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Compras\frm_transaccion.resx">
+      <DependentUpon>frm_transaccion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Areas\Logistica\beta3.resx">
       <DependentUpon>beta3.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,7 +177,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Areas\Compras\" />
     <Folder Include="Forms\Areas\Finanzas\" />
     <Folder Include="Forms\Areas\RRHH\" />
     <Folder Include="Forms\Areas\Ventas\" />
