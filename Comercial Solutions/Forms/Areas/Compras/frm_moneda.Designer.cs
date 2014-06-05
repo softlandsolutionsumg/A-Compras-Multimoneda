@@ -36,18 +36,16 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.cmb_eliminar = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtnacional = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtmoneda = new System.Windows.Forms.TextBox();
             this.txtsimbolo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -130,10 +128,8 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.txtnacional);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtmoneda);
             this.panel1.Controls.Add(this.txtsimbolo);
             this.panel1.Location = new System.Drawing.Point(21, 119);
@@ -144,28 +140,19 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cmb_eliminar);
-            this.panel2.Location = new System.Drawing.Point(368, 10);
+            this.panel2.Location = new System.Drawing.Point(376, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(139, 74);
+            this.panel2.Size = new System.Drawing.Size(206, 81);
             this.panel2.TabIndex = 21;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 13);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Seleccione vehiculo:";
             // 
             // cmb_eliminar
             // 
             this.cmb_eliminar.FormattingEnabled = true;
-            this.cmb_eliminar.Location = new System.Drawing.Point(36, 36);
+            this.cmb_eliminar.Location = new System.Drawing.Point(23, 31);
             this.cmb_eliminar.Name = "cmb_eliminar";
-            this.cmb_eliminar.Size = new System.Drawing.Size(69, 21);
+            this.cmb_eliminar.Size = new System.Drawing.Size(159, 21);
             this.cmb_eliminar.TabIndex = 19;
             // 
             // dataGridView1
@@ -177,25 +164,17 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 137);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 127);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(486, 137);
+            this.dataGridView1.Size = new System.Drawing.Size(573, 164);
             this.dataGridView1.TabIndex = 17;
-            // 
-            // txtnacional
-            // 
-            this.txtnacional.Location = new System.Drawing.Point(146, 80);
-            this.txtnacional.Name = "txtnacional";
-            this.txtnacional.ReadOnly = true;
-            this.txtnacional.Size = new System.Drawing.Size(100, 20);
-            this.txtnacional.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 31);
+            this.label1.Location = new System.Drawing.Point(3, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 0;
@@ -204,35 +183,26 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 58);
+            this.label2.Location = new System.Drawing.Point(3, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Simbolo moneda:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Valor moneda nacional:";
-            // 
             // txtmoneda
             // 
-            this.txtmoneda.Location = new System.Drawing.Point(146, 24);
+            this.txtmoneda.Location = new System.Drawing.Point(97, 25);
             this.txtmoneda.Name = "txtmoneda";
             this.txtmoneda.ReadOnly = true;
-            this.txtmoneda.Size = new System.Drawing.Size(100, 20);
+            this.txtmoneda.Size = new System.Drawing.Size(273, 20);
             this.txtmoneda.TabIndex = 8;
             // 
             // txtsimbolo
             // 
-            this.txtsimbolo.Location = new System.Drawing.Point(146, 51);
+            this.txtsimbolo.Location = new System.Drawing.Point(97, 51);
             this.txtsimbolo.Name = "txtsimbolo";
             this.txtsimbolo.ReadOnly = true;
-            this.txtsimbolo.Size = new System.Drawing.Size(100, 20);
+            this.txtsimbolo.Size = new System.Drawing.Size(273, 20);
             this.txtsimbolo.TabIndex = 9;
             // 
             // label9
@@ -262,6 +232,15 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Seleccione para eliminar, buscar y editar:";
             // 
             // frm_moneda
             // 
@@ -309,17 +288,15 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmb_eliminar;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtnacional;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtmoneda;
         private System.Windows.Forms.TextBox txtsimbolo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

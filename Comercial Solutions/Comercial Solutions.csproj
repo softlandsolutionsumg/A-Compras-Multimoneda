@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Propp.cs" />
+    <Compile Include="Forms\Areas\Compras\frm_cambio_activo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_cambio_activo.Designer.cs">
+      <DependentUpon>frm_cambio_activo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Areas\Compras\frm_cliente.Designer.cs">
+      <DependentUpon>frm_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Areas\Compras\frm_histograma_moneda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +132,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Areas\Compras\frm_cambio_activo.resx">
+      <DependentUpon>frm_cambio_activo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Areas\Compras\frm_cliente.resx">
+      <DependentUpon>frm_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Areas\Compras\frm_histograma_moneda.resx">
       <DependentUpon>frm_histograma_moneda.cs</DependentUpon>
     </EmbeddedResource>

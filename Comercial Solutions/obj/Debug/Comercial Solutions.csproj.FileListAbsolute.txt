@@ -65,3 +65,5 @@ C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj
 C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj\Debug\Comercial Solutions.csproj.GenerateResource.Cache
 C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Compras.frm_transaccion.resources
 C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Compras.frm_histograma_moneda.resources
+C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Compras.frm_cliente.resources
+C:\Users\Steffany\Documents\GitHub\A-Compras-Multimoneda\Comercial Solutions\obj\Debug\Comercial_Solutions.Forms.Areas.Compras.frm_cambio_activo.resources

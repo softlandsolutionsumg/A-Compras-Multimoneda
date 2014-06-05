@@ -62,9 +62,9 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             string query2 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
 
 
-            cmb_vehiculo.DataSource = ((x2.consulta_DataGridView(query2)));
-            cmb_vehiculo.ValueMember = "idtbm_moneda";
-            cmb_vehiculo.DisplayMember = "tipo_moneda";
+            cmb_moneda.DataSource = ((x2.consulta_DataGridView(query2)));
+            cmb_moneda.ValueMember = "idtbm_moneda";
+            cmb_moneda.DisplayMember = "tipo_moneda";
 
 
             i3nRiqJson x3 = new i3nRiqJson();
@@ -86,11 +86,26 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         {
 
 
+       /*    i3nRiqJson x = new i3nRiqJson();
+            dataGridView1.DataSource = db.consulta_DataGridView("SELECT * FROM tbt_cambio_moneda");
+            dataGridView1.Columns[1].HeaderText = "Fecha";
+            dataGridView1.Columns[2].HeaderText = "Compra";
+            dataGridView1.Columns[3].HeaderText = "Venta";
+         //   dataGridView1.Columns[4].HeaderText = "Codigo";
+            this.dataGridView1.Columns[0].Visible = false;
+            this.dataGridView1.Columns[4].Visible = false;*/
+
+            
+         
 
             i3nRiqJson x = new i3nRiqJson();
-            string query = "select cantidad_moneda, fecha_valor from tbt_histograma_moneda";
-           dataGridView1.DataSource = ((x.consulta_DataGridView(query)));
 
+            string query = "SELECT tbt_cambio_moneda.fecha_cambio as Fecha,tbt_cambio_moneda.valor_compra_moneda as CompraMoneda,tbt_cambio_moneda.valor_venta_moneda as VentaMoneda,tbm_moneda.tipo_moneda as Moneda from tbt_cambio_moneda,tbm_moneda where tbt_cambio_moneda.tbm_moneda_idtbm_moneda = tbm_moneda.idtbm_moneda";
+           // string query2 = "SELECT tbm_compra.fecha_compra as Fecha,tbm_compra.Cantidad_compra as Cantidad,tbm_empleado.nombre_empleado as Empleado,tbt_detalle_proveedor.producto_detalle_proveedorcol as Producto,tbt_detalle_proveedor.precio_compra as Precio, tbm_almacen.nombre_bodega as Almacen from tbm_compra,tbm_empleado,tbt_detalle_proveedor,tbm_almacen where tbm_empleado.idtbm_empleado = tbm_compra.tbm_empleado_idtbm_empleado and tbm_compra.tbm_almacen_idtbm_bodega=tbm_almacen.idtbm_bodega";
+           dataGridView1.DataSource = ((x.consulta_DataGridView(query)));
+ 
+           
+           
 
 
            
@@ -112,7 +127,8 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         public void ingresohistograma()
         {
 
-            if ((txttotal.Text.Equals("")))
+           
+            if ((txtcantidad.Text.Equals("")) || (txtventa.Text.Equals("")))
             {
 
                 MessageBox.Show("Algun campo esta vacio");
@@ -120,14 +136,24 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             else
             {
 
-                string tabla = "tbt_histograma_moneda";
+                string tabla = "tbt_cambio_moneda";
                 Dictionary<string, string> dict = new Dictionary<string, string>();
-                dict.Add("cantidad_moneda", txttotal.Text);
-                dict.Add("fecha_valor", dtpfecha.Value.Date.ToString("yyyy-MM-dd HH:mm"));
+              
+              string fecha_actual = DateTime.Now.ToString("yyyy-MM-dd");
+
+             dict.Add("fecha_cambio", fecha_actual);
+
+             i3nRiqJson x = new i3nRiqJson();
+            
+                dict.Add("valor_compra_moneda", txtcantidad.Text);
+                dict.Add("valor_venta_moneda", txtventa.Text);
+                
+               
+              
                
 
                 i3nRiqJson x4 = new i3nRiqJson();
-                string query4 = "select idtbm_moneda, tipo_moneda  from tbm_moneda where tipo_moneda='" + cmb_vehiculo.Text + "'";
+                string query4 = "select idtbm_moneda from tbm_moneda where tipo_moneda='" + cmb_moneda.Text + "'";
                 System.Collections.ArrayList array = x4.consultar(query4);
 
 
@@ -139,22 +165,32 @@ namespace Comercial_Solutions.Forms.Areas.Compras
                 }
                 dict.Add("tbm_moneda_idtbm_moneda", stef);
 
-
-                i3nRiqJson x = new i3nRiqJson();
                 x.insertar("1", tabla, dict);
-                MessageBox.Show("Datos ingresados en histograma moneda " + i3nRiqJson.RespuestaConexion.ToString());
+              
+            
+               
+                MessageBox.Show("Datos ingresados en cabio moneda " + i3nRiqJson.RespuestaConexion.ToString());
 
 
-             /*   i3nRiqJson x2 = new i3nRiqJson();
+                /*i3nRiqJson x2 = new i3nRiqJson();
 
                 string query2 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
 
 
-                cmb_vehiculo.DataSource = ((x2.consulta_DataGridView(query2)));
+                cmb_moneda.DataSource = ((x2.consulta_DataGridView(query2)));
               
-                cmb_vehiculo.DisplayMember = "tipo_moneda";
-                cmb_vehiculo.ValueMember = " idtbm_moneda";*/
+                cmb_moneda.DisplayMember = "tipo_moneda";
+                cmb_moneda.ValueMember = " idtbm_moneda";
 
+
+               i3nRiqJson x3 = new i3nRiqJson();
+
+                string query3 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
+
+
+                cmb_eliminar.DataSource = ((x3.consulta_DataGridView(query3)));
+                cmb_eliminar.ValueMember = "idtbm_moneda";
+                cmb_eliminar.DisplayMember = "tipo_moneda";*/
                 actualizar();
             }
         }
@@ -162,47 +198,140 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             ingresohistograma();
-            txttotal.Text = "";
+            txtcantidad.Text = "";
+            txtventa.Text = "";
+
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            txttotal.ReadOnly = false;
-            txttotal.Text = "";
+            txtcantidad.ReadOnly = false;
+            txtcantidad.Text = "";
+            txtventa.ReadOnly = false;
+            txtventa.Text = "";
            
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            i3nRiqJson x4 = new i3nRiqJson();
-            string query4 = "select id_histograma_monedacol, cantidad_moneda from tbt_histograma_moneda where cantidad_moneda='" + cmb_eliminar.Text + "'";
-            System.Collections.ArrayList array = x4.consultar(query4);
+            i3nRiqJson x3 = new i3nRiqJson();
+            string query = "select idtbm_moneda from tbm_moneda where tipo_moneda='" + cmb_eliminar.Text + "'";
+            System.Collections.ArrayList array = x3.consultar(query);
+
             foreach (Dictionary<string, string> dic in array)
             {
-                stef = (dic["id_histograma_monedacol"] + "\n");
+                stef2 = (dic["idtbm_moneda"] + "\n");
+                // txtR.AppendText(dic["employee_name"] + "\n");
                 // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+
             }
+
+
+
+            textBox1.Text = stef2;
+
+            i3nRiqJson x4 = new i3nRiqJson();
+            string query2 = "select id_histograma_monedacol from tbt_cambio_moneda where tbm_moneda_idtbm_moneda='" + textBox1.Text + "'";
+            System.Collections.ArrayList array2 = x4.consultar(query2);
+
+            foreach (Dictionary<string, string> dic in array2)
+            {
+                stef3 = (dic["id_histograma_monedacol"] + "\n");
+
+                // txtR.AppendText(dic["employee_name"] + "\n");
+                // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+
+            }
+
+
+            textBox2.Text = stef3;
+
+
+
             i3nRiqJson x = new i3nRiqJson();
-            string tabla = "tbtbt_histograma_moneda";
+            string tabla = "tbt_cambio_moneda";
             Dictionary<string, string> dict = new Dictionary<string, string>();
-            dict.Add("cantidad_moneda", txttotal.Text);
+            dict.Add("valor_compra_moneda", txtcantidad.Text);
+            dict.Add("valor_venta_moneda", txtventa.Text);
 
 
 
 
-            string condicion = "iid_histograma_monedaco= " + stef;
+
+
+
+
+            i3nRiqJson x5 = new i3nRiqJson();
+            string query5 = "select idtbm_moneda from tbm_moneda where tipo_moneda='" + cmb_moneda.Text + "'";
+            System.Collections.ArrayList array5 = x5.consultar(query5);
+
+
+
+            foreach (Dictionary<string, string> dic in array5)
+            {
+                stef = (dic["idtbm_moneda"] + "\n");
+
+            }
+            dict.Add("tbm_moneda_idtbm_moneda", stef);
+
+
+
+
+
+            string condicion = "id_histograma_monedacol=" + stef3;
             x.actualizar("3", tabla, dict, condicion);
+            txtcantidad.Text = "";
+            txtventa.Text = "";
             actualizar();
 
-            MessageBox.Show("Datos Actualizados de histograma",
-        "Editar Transaccion",
+            MessageBox.Show("Datos editados en cambio de moneda",
+        "Editar vehiculos",
         MessageBoxButtons.OK);
+
+            actualizar();
+
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            string busca = cmb_eliminar.SelectedValue.ToString();
-            dataGridView1.DataSource = db.consulta_DataGridView("select *from tbt_histograma_moneda where id_histograma_monedacol =" + busca + ";");
+
+
+            i3nRiqJson x3 = new i3nRiqJson();
+           
+           string query = "select idtbm_moneda from tbm_moneda where tipo_moneda='" + cmb_eliminar.Text + "'";
+            System.Collections.ArrayList array = x3.consultar(query);
+
+            foreach (Dictionary<string, string> dic in array)
+            {
+                stef2 = (dic["idtbm_moneda"] + "\n");
+                // txtR.AppendText(dic["employee_name"] + "\n");
+                // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+
+            }
+
+
+
+            textBox1.Text = stef2;
+
+            i3nRiqJson x4 = new i3nRiqJson();
+            string query2 = "select id_histograma_monedacol from tbt_cambio_moneda where tbm_moneda_idtbm_moneda='" + textBox1.Text + "'";
+            System.Collections.ArrayList array2 = x4.consultar(query2);
+
+            foreach (Dictionary<string, string> dic in array2)
+            {
+                stef3 = (dic["id_histograma_monedacol"] + "\n");
+
+                // txtR.AppendText(dic["employee_name"] + "\n");
+                // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+
+            }
+
+            
+            
+            
+            
+         //   string busca = cmb_eliminar.SelectedValue.ToString();
+            dataGridView1.DataSource = db.consulta_DataGridView("select *from tbt_cambio_moneda where id_histograma_monedacol =" + stef3 + ";");
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -224,7 +353,7 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             textBox1.Text = stef2;
 
             i3nRiqJson x4 = new i3nRiqJson();
-            string query2 = "select id_histograma_monedacol from tbt_histograma_moneda where tbm_moneda_idtbm_moneda='" + textBox1.Text + "'";
+            string query2 = "select id_histograma_monedacol from tbt_cambio_moneda where tbm_moneda_idtbm_moneda='" + textBox1.Text + "'";
             System.Collections.ArrayList array2 = x4.consultar(query2);
 
             foreach (Dictionary<string, string> dic in array2)
@@ -242,12 +371,12 @@ namespace Comercial_Solutions.Forms.Areas.Compras
 
 
             i3nRiqJson x = new i3nRiqJson();
-            string tabla = "tbt_histograma_moneda";
+            string tabla = "tbt_cambio_moneda";
             string condicion = "id_histograma_monedacol=" + stef3;
 
             //string condicion = "idtbt_ingreso_vehiculo=" + id;
             x.eliminar("4", tabla, condicion);
-            MessageBox.Show("Dato eliminado en histograma moneda " + i3nRiqJson.RespuestaConexion.ToString());
+            MessageBox.Show("Dato eliminado en cambio moneda " + i3nRiqJson.RespuestaConexion.ToString());
 
             //ºº  x.eliminar("4", "tbt_bancos", condicion);
 
@@ -261,11 +390,28 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             editar = true;
-            txttotal.ReadOnly = false;
+            txtcantidad.ReadOnly = false;
+            txtventa.ReadOnly = false;
         
 
 
             actualizar();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+        
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            frm_cambio_activo frm = new frm_cambio_activo();
+            frm.Show();
         }
 
  

@@ -37,6 +37,7 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         bool editar = false;
         string d;
         string stef;
+        string stef2;
         public frm_moneda()
         {
             X = Propp.X;
@@ -51,6 +52,10 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             this.Location = new Point(250, 56);
             actualizar();
 
+       
+            //string query2 = " SELECT tbm_moneda.idtbm_moneda as Id moneda,tbm_moneda.tipo_moneda as Moneda from tbm_moneda";
+          // string query2 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
+
             i3nRiqJson x2 = new i3nRiqJson();
 
             string query2 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
@@ -59,16 +64,6 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             cmb_eliminar.DataSource = ((x2.consulta_DataGridView(query2)));
             cmb_eliminar.ValueMember = "idtbm_moneda";
             cmb_eliminar.DisplayMember = "tipo_moneda";
-          /*  i3nRiqJson x2 = new i3nRiqJson();
-
-            string query2 = "select idtbm_moneda, tipo_moneda from tbm_moneda";
-
-
-            cmb_eliminar.DataSource = ((x2.consulta_DataGridView(query2)));
-           cmb_eliminar.ValueMember = "idtbm_moneda";
-            cmb_eliminar.DisplayMember = "tipo_moneda";*/
-
-            //actualizar();
         }
 
         /***************************************************************
@@ -80,10 +75,10 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
         public void actualizar()
         {
             i3nRiqJson x = new i3nRiqJson();
-            string query = "select tipo_moneda, simbolo_moneda, valor_moneda_nacional   from tbm_moneda";
 
 
-             dataGridView1.DataSource = ((x.consulta_DataGridView(query)));
+            string query2 = " SELECT tbm_moneda.tipo_moneda as Moneda, tbm_moneda.simbolo_moneda as Simbolo from tbm_moneda";
+             dataGridView1.DataSource = ((x.consulta_DataGridView(query2)));
 
 
            /* dataGridView1.DataSource = db.consulta_DataGridView("SELECT * FROM tbm_moneda");
@@ -103,7 +98,7 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
         public void guardarmoneda()
         {
 
-            if ((txtmoneda.Text.Equals("")) || (txtsimbolo.Text.Equals("")) || (txtnacional.Text.Equals("")))
+            if ((txtmoneda.Text.Equals("")) || (txtsimbolo.Text.Equals("")) )
             {
 
                 MessageBox.Show("Ingrese todos los datos requeridos");
@@ -115,14 +110,57 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
                 DialogResult dialogResult = MessageBox.Show("Desea realizar el registro", "Registro de vehiculos", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    // INGRESO MONEDA
                     string tabla = "tbm_moneda";
                     Dictionary<string, string> dict = new Dictionary<string, string>();
                     dict.Add("tipo_moneda", txtmoneda.Text);
                     dict.Add("simbolo_moneda", txtsimbolo.Text);
-                    dict.Add("valor_moneda_nacional", txtnacional.Text);
+                 
                    
 
                     db.insertar("1", tabla, dict);
+
+
+
+                    // INGRESO HISTOGRAMA MONEDA
+
+
+              /*      i3nRiqJson x3 = new i3nRiqJson();
+                    string query = "select idtbm_moneda from tbm_moneda ";
+                    System.Collections.ArrayList array = x3.consultar(query);
+
+                    foreach (Dictionary<string, string> dic in array)
+                    {
+                        stef2 = (dic["idtbm_moneda"] + "\n");
+                        // txtR.AppendText(dic["employee_name"] + "\n");
+                        // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+
+                    }
+
+
+
+
+                    string tabla2 = "tbt_histograma_moneda";
+                    Dictionary<string, string> dict2 = new Dictionary<string, string>();
+                    
+                    DateTime Hoy = DateTime.Today;
+                    string fecha_actual = Hoy.ToString("dd-MM-yyy");
+                   
+                    dict2.Add("fecha_valor", fecha_actual );
+                    dict2.Add("tbm_moneda_idtbm_moneda", stef2);
+                    db.insertar("1", tabla2, dict2);
+                    
+
+
+
+               */
+
+
+
+                  
+
+                    //-------------------------
+
                     if (i3nRiqJson.RespuestaConexion.ToString().Equals("0"))
                     {
                         MessageBox.Show("Registro Realizado exitosamente");
@@ -160,9 +198,7 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
             txtsimbolo.ReadOnly = false;
             txtsimbolo.Text = "";
 
-            txtnacional.ReadOnly = false;
-            txtnacional.Text = "";
-
+            
           
         }
 
@@ -171,7 +207,7 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
             guardarmoneda();
             txtmoneda.Text = "";
             txtsimbolo.Text = "";
-            txtnacional.Text = "";
+        
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -221,7 +257,7 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
             dict.Add("tipo_moneda", txtmoneda.Text);
             dict.Add("simbolo_moneda", txtsimbolo.Text);
 
-            dict.Add("valor_moneda_nacional", txtnacional.Text);
+        
 
             string condicion = "idtbm_moneda= " + stef;
             x.actualizar("3", tabla, dict, condicion);
@@ -237,7 +273,7 @@ DESCRIPCION:  Procedimiento de actualizacion del dataGridView1
             editar = true;
             txtmoneda.ReadOnly = false;
             txtsimbolo.ReadOnly = false;
-            txtnacional.ReadOnly = false;
+          
            
            
             actualizar();
