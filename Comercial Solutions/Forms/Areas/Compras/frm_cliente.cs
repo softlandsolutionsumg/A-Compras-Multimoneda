@@ -29,7 +29,7 @@ namespace Comercial_Solutions.Forms.Areas.Compras
 
         string stef;
 
-
+        string validacion;
         string stef2;
         string stef3;
         public frm_cliente()
@@ -49,11 +49,11 @@ namespace Comercial_Solutions.Forms.Areas.Compras
 
             i3nRiqJson x = new i3nRiqJson();
 
-            string query = "select idtbm_municipio, nombre  from tbm_municipio";
+            string query = "select idtbm_departamentos , nombre  from tbm_departamentos";
 
 
             cmb_departamento.DataSource = ((x.consulta_DataGridView(query)));
-            cmb_departamento.ValueMember = "idtbm_municipio";
+            cmb_departamento.ValueMember = "idtbm_departamentos";
             cmb_departamento.DisplayMember = "nombre";
 
 
@@ -90,6 +90,20 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             // string query2 = "SELECT tbm_compra.fecha_compra as Fecha,tbm_compra.Cantidad_compra as Cantidad,tbm_empleado.nombre_empleado as Empleado,tbt_detalle_proveedor.producto_detalle_proveedorcol as Producto,tbt_detalle_proveedor.precio_compra as Precio, tbm_almacen.nombre_bodega as Almacen from tbm_compra,tbm_empleado,tbt_detalle_proveedor,tbm_almacen where tbm_empleado.idtbm_empleado = tbm_compra.tbm_empleado_idtbm_empleado and tbm_compra.tbm_almacen_idtbm_bodega=tbm_almacen.idtbm_bodega";
             dataGridView1.DataSource = ((x.consulta_DataGridView(query)));
 
+
+            i3nRiqJson x3 = new i3nRiqJson();
+
+            string query3 = "select idtbm_cliente, nombre_cliente from tbm_cliente";
+
+
+            cmb_eliminar.DataSource = ((x3.consulta_DataGridView(query3)));
+            cmb_eliminar.ValueMember = "idtbm_cliente";
+            cmb_eliminar.DisplayMember = "nombre_cliente";
+
+            txtcantidad.Text = "";
+            txtventa.Text = "";
+            textBox3.Text = "";
+
         }
 
 
@@ -114,9 +128,9 @@ namespace Comercial_Solutions.Forms.Areas.Compras
           
 
              i3nRiqJson x = new i3nRiqJson();
-            
-                dict.Add("valor_compra_moneda", txtcantidad.Text);
-                dict.Add("valor_venta_moneda", txtventa.Text);
+
+             dict.Add("nombre_cliente", txtcantidad.Text);
+             dict.Add("nit_cliente", txtventa.Text);
                 dict.Add("direccion_cliente", textBox3.Text);
                
               
@@ -138,28 +152,30 @@ namespace Comercial_Solutions.Forms.Areas.Compras
                 //DEPARTAMENTO
 
                 i3nRiqJson x2 = new i3nRiqJson();
-                string query2 = "select idtbm_departamentos, nombre from  tbm_departamentos where nombre='" + cmb_departamento + "'";
+                string query2 = "select idtbm_departamentos, nombre from  tbm_departamentos where nombre='" + cmb_departamento.Text + "'";
                 System.Collections.ArrayList array2 = x2.consultar(query2);
                 foreach (Dictionary<string, string> dic in array2)
                 {
-                    stef2 = (dic["idtbm_departamento"] + "\n");
+                    validacion = (dic["idtbm_departamentos"] + "\n");
                     // Console.WriteLine("VIENEN: "+dic["employee_name"]);
                 }
 
 
-                textBox1.Text = stef2;
+                textBox1.Text = validacion;
 
 
-                i3nRiqJson x3 = new i3nRiqJson();
+               i3nRiqJson x3 = new i3nRiqJson();
 
-                string query3 = "select idtbm_municipio, nombre  from tbm_municipio where idtbm_departamentos ='" + stef2 + "' ";
+
+
+              string query3 = "select idtbm_municipio, nombre  from tbm_municipio where idtbm_departamentos ='" + validacion + "' ";
 
 
                 cmb_municipio.DataSource = ((x3.consulta_DataGridView(query3)));
                 cmb_municipio.ValueMember = "idtbm_municipio";
                 cmb_municipio.DisplayMember = "nombre ";
-                dict.Add("idtbm_departamentos", stef2);
 
+                dict.Add("idtbm_municipio",  validacion);
 
 
 
@@ -168,7 +184,7 @@ namespace Comercial_Solutions.Forms.Areas.Compras
               
             
                
-                MessageBox.Show("Datos ingresados en cabio moneda " + i3nRiqJson.RespuestaConexion.ToString());
+                MessageBox.Show("Datos ingresados en clientes " + i3nRiqJson.RespuestaConexion.ToString());
                
                
 
@@ -199,13 +215,13 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         private void pictureBox7_Click(object sender, EventArgs e)
         {
 
-           /* i3nRiqJson x3 = new i3nRiqJson();
-            string query = "select idtbm_descuento from tbm_descuento where descuento='" + cmb_eliminar.Text + "'";
+            i3nRiqJson x3 = new i3nRiqJson();
+            string query = "select idtbm_cliente from tbm_cliente where nombre_cliente='" + cmb_eliminar.Text + "'";
             System.Collections.ArrayList array = x3.consultar(query);
 
             foreach (Dictionary<string, string> dic in array)
             {
-                stef2 = (dic["idtbm_descuento"] + "\n");
+                stef2 = (dic["idtbm_cliente"] + "\n");
                 // txtR.AppendText(dic["employee_name"] + "\n");
                 // Console.WriteLine("VIENEN: "+dic["employee_name"]);
 
@@ -232,14 +248,14 @@ namespace Comercial_Solutions.Forms.Areas.Compras
 
 
 
-            //   string busca = cmb_eliminar.SelectedValue.ToString();
-            dataGridView1.DataSource = db.consulta_DataGridView("select *from tbm_cliente where idtbm_cliente =" + stef3 + ";");*/
+             string busca = cmb_eliminar.SelectedValue.ToString();
+            dataGridView1.DataSource = db.consulta_DataGridView("select *from tbm_cliente where idtbm_cliente =" + stef3 + ";");
 
 
 
-            string busca = cmb_eliminar.SelectedValue.ToString();
+            //string busca = cmb_eliminar.SelectedValue.ToString();
           //  dataGridView1.DataSource = db.consulta_DataGridView("SELECT tbm_cliente.nombre_cliente as Nombre,tbm_cliente.nit_cliente as Nit,tbm_cliente.direccion_cliente as Direccion from tbm_cliente   where tbm_descuento_idtbm_descuento =" + busca + ";");
-            dataGridView1.DataSource = db.consulta_DataGridView("SELECT tbm_cliente.nombre_cliente as Nombre,tbm_cliente.nit_cliente as Nit,tbm_cliente.direccion_cliente as Direccion, tbm_descuento.descuento as Descuento from tbm_cliente ,tbm_descuento   where  tbm_cliente.tbm_descuento_idtbm_descuento = tbm_descuento .idtbm_descuento=" + busca + ";   ");
+           // dataGridView1.DataSource = db.consulta_DataGridView("SELECT tbm_cliente.nombre_cliente as Nombre,tbm_cliente.nit_cliente as Nit,tbm_cliente.direccion_cliente as Direccion, tbm_descuento.descuento as Descuento from tbm_cliente ,tbm_descuento   where  tbm_cliente.tbm_descuento_idtbm_descuento = tbm_descuento .idtbm_descuento=" + busca + ";   ");
         }
 
 
@@ -256,9 +272,11 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             i3nRiqJson x = new i3nRiqJson();
             string tabla = "tbm_cliente";
             Dictionary<string, string> dict = new Dictionary<string, string>();
+
             dict.Add("nombre_cliente", txtcantidad.Text);
             dict.Add("nit_cliente", txtventa.Text);
-
+            dict.Add("direccion_cliente", textBox3.Text);
+           // Descuento
             i3nRiqJson x3 = new i3nRiqJson();
             string query3 = "select idtbm_descuento from tbm_descuento where descuento='" + cmb_moneda.Text + "'";
             System.Collections.ArrayList array2 = x4.consultar(query3);
@@ -272,6 +290,37 @@ namespace Comercial_Solutions.Forms.Areas.Compras
             }
             dict.Add("tbm_descuento_idtbm_descuento", stef);
 
+            //Departamento
+
+
+
+
+
+            i3nRiqJson x7 = new i3nRiqJson();
+            string query7 = "select idtbm_departamentos, nombre from  tbm_departamentos where nombre='" + cmb_departamento.Text + "'";
+            System.Collections.ArrayList array7 = x7.consultar(query7);
+            foreach (Dictionary<string, string> dic in array7)
+            {
+                validacion = (dic["idtbm_departamentos"] + "\n");
+                // Console.WriteLine("VIENEN: "+dic["employee_name"]);
+            }
+
+
+            textBox1.Text = validacion;
+
+
+            i3nRiqJson x8 = new i3nRiqJson();
+
+
+
+            string query8 = "select idtbm_municipio, nombre  from tbm_municipio where idtbm_departamentos ='" + validacion + "' ";
+
+
+            cmb_municipio.DataSource = ((x8.consulta_DataGridView(query8)));
+            cmb_municipio.ValueMember = "idtbm_municipio";
+            cmb_municipio.DisplayMember = "nombre ";
+
+            dict.Add("idtbm_municipio", validacion);
 
 
 
@@ -319,6 +368,9 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             ingresocliente();
+            txtcantidad.Text = "";
+            txtventa.Text = "";
+            textBox3.Text = "";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -329,21 +381,23 @@ namespace Comercial_Solutions.Forms.Areas.Compras
         private void cmb_departamento_SelectionChangeCommitted(object sender, EventArgs e)
         {
             i3nRiqJson x4 = new i3nRiqJson();
-            string query4 = "select idtbm_departamentos, nombre from  tbm_departamentos where nombre='" + cmb_departamento + "'";
+            string query4 = "select idtbm_departamentos, nombre from  tbm_departamentos where nombre='" + cmb_departamento.Text+ "'";
             System.Collections.ArrayList array = x4.consultar(query4);
             foreach (Dictionary<string, string> dic in array)
             {
-                stef = (dic["idtbm_departamento"] + "\n");
+                validacion = (dic["idtbm_departamentos"] + "\n");
                 // Console.WriteLine("VIENEN: "+dic["employee_name"]);
             }
 
 
-            textBox1.Text = stef;
+            textBox1.Text = validacion;
 
 
             i3nRiqJson x3 = new i3nRiqJson();
 
-            string query3 = "select idtbm_municipio, nombre  from tbm_municipio where idtbm_departamentos ='" + stef + "' ";
+
+
+            string query3 = "select idtbm_municipio, nombre  from tbm_municipio where idtbm_departamentos ='" + validacion + "' ";
 
 
             cmb_municipio.DataSource = ((x3.consulta_DataGridView(query3)));

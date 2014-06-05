@@ -122,7 +122,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(23, 108);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(602, 417);
+            this.panel1.Size = new System.Drawing.Size(647, 431);
             this.panel1.TabIndex = 44;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -130,11 +130,11 @@
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.cmb_municipio);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cmb_departamento);
             this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.cmb_departamento);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.cmb_municipio);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(18, 132);
             this.groupBox2.Name = "groupBox2";
@@ -145,7 +145,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(183, 60);
+            this.textBox3.Location = new System.Drawing.Point(192, 67);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(199, 21);
             this.textBox3.TabIndex = 5;
@@ -154,7 +154,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(128, 63);
+            this.label8.Location = new System.Drawing.Point(137, 70);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 15);
             this.label8.TabIndex = 4;
@@ -163,7 +163,7 @@
             // cmb_municipio
             // 
             this.cmb_municipio.FormattingEnabled = true;
-            this.cmb_municipio.Location = new System.Drawing.Point(369, 18);
+            this.cmb_municipio.Location = new System.Drawing.Point(378, 25);
             this.cmb_municipio.Name = "cmb_municipio";
             this.cmb_municipio.Size = new System.Drawing.Size(121, 23);
             this.cmb_municipio.TabIndex = 3;
@@ -172,7 +172,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(299, 21);
+            this.label7.Location = new System.Drawing.Point(308, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 15);
             this.label7.TabIndex = 2;
@@ -181,7 +181,7 @@
             // cmb_departamento
             // 
             this.cmb_departamento.FormattingEnabled = true;
-            this.cmb_departamento.Location = new System.Drawing.Point(128, 21);
+            this.cmb_departamento.Location = new System.Drawing.Point(137, 28);
             this.cmb_departamento.Name = "cmb_departamento";
             this.cmb_departamento.Size = new System.Drawing.Size(121, 23);
             this.cmb_departamento.TabIndex = 1;
@@ -192,7 +192,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(33, 21);
+            this.label6.Location = new System.Drawing.Point(42, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 15);
             this.label6.TabIndex = 0;
@@ -260,11 +260,11 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 255);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 253);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(561, 140);
+            this.dataGridView1.Size = new System.Drawing.Size(571, 175);
             this.dataGridView1.TabIndex = 14;
             // 
             // label5
@@ -362,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 567);
+            this.ClientSize = new System.Drawing.Size(743, 586);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.textBox1);
